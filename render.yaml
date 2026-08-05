@@ -1,0 +1,13 @@
+services:
+  - type: web
+services:
+  - type: web
+    name: vmos-bot
+    env: python
+    buildCommand: |
+      apt-get update && apt-get install -y xvfb google-chrome-stable
+      pip install -r requirements.txt
+    startCommand: xvfb-run -a python main.py
+    envVars:
+      - key: HEADLESS
+        value: "true"
